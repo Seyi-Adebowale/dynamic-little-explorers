@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Brand color tokens ---- */
+  /* Berry: refined magenta/pink, primary brand color */
+  --color-berry-50: #fdf2f6;
+  --color-berry-100: #fbe4ed;
+  --color-berry-200: #f5c3d8;
+  --color-berry-300: #ec96bc;
+  --color-berry-400: #df6299;
+  --color-berry-500: #c73b78;
+  --color-berry-600: #a92a63;
+  --color-berry-700: #872051;
+  --color-berry-800: #6b1a41;
+  --color-berry-900: #501533;
+
+  /* Forest: muted sage/forest green, secondary */
+  --color-forest-50: #f3f7f1;
+  --color-forest-100: #e3ecdd;
+  --color-forest-200: #c6dabb;
+  --color-forest-300: #a1c28f;
+  --color-forest-400: #79a464;
+  --color-forest-500: #4f7f41;
+  --color-forest-600: #3d6533;
+  --color-forest-700: #31502a;
+  --color-forest-800: #284122;
+  --color-forest-900: #21351d;
+
+  /* Amber: warm terracotta/burnt orange, accent */
+  --color-amber-50: #fdf6ee;
+  --color-amber-100: #fae9d3;
+  --color-amber-200: #f3d0a3;
+  --color-amber-300: #e9ac6a;
+  --color-amber-400: #dc8a41;
+  --color-amber-500: #c26c28;
+  --color-amber-600: #a2551f;
+  --color-amber-700: #82441c;
+  --color-amber-800: #69381b;
+  --color-amber-900: #572f1a;
+
+  /* Navy: from the school logo's tagline mark, used as a sparing 4th accent */
+  --color-navy-50: #eef3f9;
+  --color-navy-100: #dbe6f2;
+  --color-navy-200: #b0c7e2;
+  --color-navy-300: #7fa2cc;
+  --color-navy-400: #4d76a8;
+  --color-navy-500: #2c5482;
+  --color-navy-600: #1f3f66;
+  --color-navy-700: #183253;
+  --color-navy-800: #142943;
+  --color-navy-900: #102037;
+
+  /* Cream: warm neutral backgrounds */
+  --color-cream-50: #fffdfa;
+  --color-cream-100: #fbf6ee;
+  --color-cream-200: #f4ecdc;
+  --color-cream-300: #ecdfc7;
+
+  /* Ink: warm charcoal text scale (never pure black/gray) */
+  --color-ink-900: #241f1b;
+  --color-ink-800: #332c26;
+  --color-ink-700: #4a4038;
+  --color-ink-600: #625649;
+  --color-ink-500: #7c6f60;
+  --color-ink-400: #a39686;
+  --color-ink-300: #c2b6a7;
+  --color-ink-200: #ddd4c6;
+  --color-ink-100: #eee7da;
+
+  /* ---- Typography ---- */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+
+  /* ---- Radius scale (deliberately restrained) ---- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ---- Shadows: soft, warm-tinted, never harsh ---- */
+  --shadow-soft: 0 2px 8px -2px rgba(80, 21, 51, 0.06), 0 8px 24px -8px rgba(80, 21, 51, 0.08);
+  --shadow-lifted: 0 8px 16px -4px rgba(80, 21, 51, 0.1), 0 24px 48px -16px rgba(80, 21, 51, 0.14);
+
+  /* ---- Breakpoints (extend defaults with a wide desktop stop) ---- */
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 100rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-ink-100);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream-100);
+    color: var(--color-ink-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink-900);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-berry-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-berry-200);
+    color: var(--color-berry-900);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
