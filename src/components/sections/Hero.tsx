@@ -20,7 +20,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative isolate min-h-[92vh] overflow-hidden bg-ink-900">
+    <section id="home" className="relative isolate min-h-[78vh] overflow-hidden bg-ink-900 sm:min-h-[85vh] lg:min-h-[92vh]">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           <motion.img
@@ -38,7 +38,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/70 via-ink-900/10 to-transparent" />
       </div>
 
-      <Container className="relative z-10 flex min-h-[92vh] flex-col justify-end pb-20 pt-32 sm:pb-24">
+      <Container className="relative z-10 flex min-h-[78vh] flex-col justify-end pb-12 pt-24 sm:min-h-[85vh] sm:pb-20 sm:pt-32 lg:min-h-[92vh] lg:pb-24">
         <div className="max-w-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -49,16 +49,16 @@ export function Hero() {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <Eyebrow tone="amberLight">{slide.eyebrow}</Eyebrow>
-              <h1 className="mt-5 text-balance text-4xl leading-[1.08] text-cream-50 sm:text-5xl lg:text-[3.4rem]">
+              <h1 className="mt-4 text-balance text-3xl leading-[1.1] text-cream-50 sm:mt-5 sm:text-5xl sm:leading-[1.08] lg:text-[3.4rem]">
                 {slide.title} <span className="text-amber-300">{slide.highlight}</span>
               </h1>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-cream-200 sm:text-lg">
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-cream-200 sm:mt-6 sm:text-lg">
                 {slide.description}
               </p>
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-9">
             <Button as="a" href="#contact" size="lg" variant="primary" icon={<ArrowRight size={18} />}>
               Book a Visit
             </Button>
@@ -74,7 +74,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 flex items-center gap-2.5">
+        <div className="mt-8 flex items-center gap-2.5 sm:mt-16">
           {heroSlides.map((s, i) => (
             <button
               key={s.src}

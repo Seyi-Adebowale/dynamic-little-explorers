@@ -7,13 +7,13 @@ import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
 import { galleryImages } from '@/data/site'
 
-const heightClasses = [
-  'h-52 sm:h-64',
-  'h-64 sm:h-80',
-  'h-56 sm:h-72',
-  'h-64 sm:h-80',
-  'h-52 sm:h-64',
-  'h-60 sm:h-72',
+const aspectClasses = [
+  'aspect-[3/4]',
+  'aspect-square',
+  'aspect-[4/5]',
+  'aspect-square',
+  'aspect-[3/4]',
+  'aspect-[4/5]',
 ]
 
 export function Gallery() {
@@ -38,7 +38,7 @@ export function Gallery() {
                 src={image.src}
                 alt={image.alt}
                 loading="lazy"
-                className={`w-full object-cover transition-transform duration-700 ease-out hover:scale-105 ${heightClasses[i % heightClasses.length]}`}
+                className={`w-full object-cover transition-transform duration-700 ease-out hover:scale-105 ${aspectClasses[i % aspectClasses.length]}`}
               />
             </Reveal>
           ))}

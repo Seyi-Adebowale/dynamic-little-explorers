@@ -32,9 +32,9 @@ export function Blog() {
                 />
               </div>
               <span className="mt-5 inline-block text-xs font-bold uppercase tracking-[0.16em] text-navy-600">
-                {featured.category} · {featured.date}
+                {featured.category}
               </span>
-              <h3 className="mt-2 text-balance font-display text-2xl font-semibold text-ink-900 group-hover:text-navy-600">
+              <h3 className="mt-2 font-display text-2xl font-semibold text-ink-900 group-hover:text-navy-600">
                 {featured.title}
               </h3>
               <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-600">
@@ -63,9 +63,9 @@ export function Blog() {
                   </div>
                   <div>
                     <span className="text-xs font-bold uppercase tracking-[0.16em] text-navy-600">
-                      {post.category} · {post.date}
+                      {post.category}
                     </span>
-                    <h3 className="mt-1.5 text-balance font-display text-base font-semibold leading-snug text-ink-900 group-hover:text-navy-600 sm:text-lg">
+                    <h3 className="mt-1.5 font-display text-base font-semibold leading-snug text-ink-900 group-hover:text-navy-600 sm:text-lg">
                       {post.title}
                     </h3>
                   </div>

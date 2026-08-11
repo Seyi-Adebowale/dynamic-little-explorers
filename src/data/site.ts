@@ -222,6 +222,18 @@ export const testimonials: Testimonial[] = [
     name: 'Mr. Segun Olanipekun',
     role: 'Parent',
   },
+  {
+    quote:
+      'What stood out to us was how much the teachers actually know our daughter — her moods, her interests, her little quirks. It never feels like just another daycare.',
+    name: 'Mrs. Folake Adeyemi',
+    role: 'Parent',
+  },
+  {
+    quote:
+      'My son used to struggle with separation anxiety. Within weeks here, he was running in every morning excited to see his friends. That transformation says everything.',
+    name: 'Mr. Chidi Okafor',
+    role: 'Parent',
+  },
 ]
 
 export const blogPosts: BlogPost[] = [
