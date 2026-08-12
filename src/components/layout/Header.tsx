@@ -59,11 +59,11 @@ export function Header() {
           <img
             src={logo}
             alt="Dynamic Little Explorers Montessori School"
-            className="h-11 w-11 object-contain md:h-16 md:w-16"
+            className="h-14 w-14 object-contain md:h-16 md:w-16"
           />
           <span className="flex flex-col leading-tight">
             <span
-              className={`font-display text-sm font-semibold transition-colors duration-300 md:text-lg ${
+              className={`font-display text-base font-semibold transition-colors duration-300 md:text-lg ${
                 scrolled ? 'text-ink-900' : 'text-cream-50'
               }`}
             >
@@ -71,7 +71,7 @@ export function Header() {
               <span className={scrolled ? 'text-berry-600' : 'text-berry-300'}>Explorers</span>
             </span>
             <span
-              className={`text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 md:text-xs md:tracking-[0.14em] ${
+              className={`text-xs font-semibold uppercase tracking-[0.1em] transition-colors duration-300 md:tracking-[0.14em] ${
                 scrolled ? 'text-ink-500' : 'text-cream-100'
               }`}
             >
