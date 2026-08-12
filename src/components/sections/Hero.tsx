@@ -20,7 +20,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative isolate min-h-[68vh] overflow-hidden bg-ink-900 md:min-h-[85vh] lg:min-h-[92vh]">
+    <section id="home" className="relative isolate min-h-[85vh] overflow-hidden bg-ink-900 lg:min-h-[92vh]">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           <motion.img
@@ -38,7 +38,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/70 via-ink-900/10 to-transparent" />
       </div>
 
-      <Container className="relative z-10 flex min-h-[68vh] flex-col justify-end pb-10 pt-20 md:min-h-[85vh] md:pb-20 md:pt-32 lg:min-h-[92vh] lg:pb-24">
+      <Container className="relative z-10 flex min-h-[85vh] flex-col justify-end pb-10 pt-20 md:pb-20 md:pt-32 lg:min-h-[92vh] lg:pb-24">
         <div className="max-w-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -52,7 +52,7 @@ export function Hero() {
               <h1 className="mt-3 text-balance text-2xl leading-[1.15] text-cream-50 md:mt-5 md:text-5xl md:leading-[1.08] lg:text-[3.4rem]">
                 {slide.title} <span className="text-amber-300">{slide.highlight}</span>
               </h1>
-              <p className="mt-2 max-w-lg text-xs leading-relaxed text-cream-200 md:mt-6 md:text-lg">
+              <p className="mt-2 max-w-lg text-sm leading-relaxed text-cream-200 md:mt-6 md:text-lg">
                 {slide.description}
               </p>
             </motion.div>

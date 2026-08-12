@@ -31,7 +31,7 @@ const sizes: Record<Size, string> = {
   md: 'px-5 py-2.5 text-sm',
   // Mobile-first: matches the `md` size below 768px, then scales up to its
   // full size — keeps large CTAs from overpowering small screens.
-  lg: 'px-4 py-2 text-xs md:px-7 md:py-3.5 md:text-base',
+  lg: 'px-5 py-2.5 text-sm md:px-7 md:py-3.5 md:text-base',
 }
 
 export function Button<T extends ElementType = 'button'>({

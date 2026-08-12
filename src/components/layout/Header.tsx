@@ -71,7 +71,7 @@ export function Header() {
               <span className={scrolled ? 'text-berry-600' : 'text-berry-300'}>Explorers</span>
             </span>
             <span
-              className={`text-[9px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 md:text-xs md:tracking-[0.14em] ${
+              className={`text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 md:text-xs md:tracking-[0.14em] ${
                 scrolled ? 'text-ink-500' : 'text-cream-100'
               }`}
             >
