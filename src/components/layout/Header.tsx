@@ -59,11 +59,11 @@ export function Header() {
           <img
             src={logo}
             alt="Dynamic Little Explorers Montessori School"
-            className="h-16 w-16 object-contain"
+            className="h-11 w-11 object-contain md:h-16 md:w-16"
           />
           <span className="flex flex-col leading-tight">
             <span
-              className={`font-display text-lg font-semibold transition-colors duration-300 ${
+              className={`font-display text-sm font-semibold transition-colors duration-300 md:text-lg ${
                 scrolled ? 'text-ink-900' : 'text-cream-50'
               }`}
             >
@@ -71,7 +71,7 @@ export function Header() {
               <span className={scrolled ? 'text-berry-600' : 'text-berry-300'}>Explorers</span>
             </span>
             <span
-              className={`text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-300 ${
+              className={`text-[9px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 md:text-xs md:tracking-[0.14em] ${
                 scrolled ? 'text-ink-500' : 'text-cream-100'
               }`}
             >
@@ -120,7 +120,7 @@ export function Header() {
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
           className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 lg:hidden ${
-            scrolled || open ? 'text-ink-800' : 'text-cream-50'
+            scrolled || open ? 'bg-ink-100 text-ink-800' : 'bg-cream-50/15 text-cream-50'
           }`}
           onClick={() => setOpen((v) => !v)}
         >

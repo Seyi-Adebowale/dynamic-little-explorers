@@ -12,6 +12,7 @@ import { Container } from '@/components/layout/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
 import { valueProps } from '@/data/site'
+import familiesPhoto from '@/assets/families-playground.jpg'
 
 const icons: Record<string, LucideIcon> = {
   HeartHandshake,
@@ -29,9 +30,9 @@ export function WhyUs() {
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] shadow-lifted">
             <img
-              src="https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=1000&q=80&auto=format&fit=crop"
-              alt="A teacher engaging warmly with a toddler at Dynamic Little Explorers"
-              className="aspect-[4/3] w-full object-cover sm:aspect-[16/9] md:aspect-[4/5]"
+              src={familiesPhoto}
+              alt="A toddler enjoying playtime at Dynamic Little Explorers"
+              className="aspect-[1/1] w-full object-cover object-center sm:aspect-[4/3] md:aspect-[3/4] md:object-top"
             />
           </div>
         </Reveal>

@@ -4,6 +4,7 @@ import { Section } from '@/components/layout/Section'
 import { Container } from '@/components/layout/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
+import { Lightbox } from '@/components/ui/Lightbox'
 import { facilities, montessoriAreas } from '@/data/site'
 
 const images = [...facilities, ...montessoriAreas]
@@ -26,6 +27,8 @@ export function Environment() {
   const [virtualIndex, setVirtualIndex] = useState(CLONE_COUNT)
   const [isHovering, setIsHovering] = useState(false)
   const virtualIndexRef = useRef(CLONE_COUNT)
+  const settleFallbackRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const scrollToVirtual = (index: number, smooth: boolean) => {
     const track = trackRef.current
@@ -44,9 +47,40 @@ export function Environment() {
     setVirtualIndex(index)
   }
 
+  // If we've scrolled to rest on a cloned card, silently (no transition)
+  // snap to the equivalent real card so the loop feels seamless.
+  const handleSettled = () => {
+    const track = trackRef.current
+    if (!track) return
+    const children = Array.from(track.children) as HTMLElement[]
+    let closest = 0
+    let minDist = Infinity
+    children.forEach((child, i) => {
+      const dist = Math.abs(child.offsetLeft - track.scrollLeft)
+      if (dist < minDist) {
+        minDist = dist
+        closest = i
+      }
+    })
+
+    if (closest < CLONE_COUNT || closest >= CLONE_COUNT + images.length) {
+      const settled = CLONE_COUNT + realIndexOf(closest)
+      setVirtual(settled)
+      scrollToVirtual(settled, false)
+    } else {
+      setVirtual(closest)
+    }
+  }
+
   const goTo = (index: number) => {
     setVirtual(index)
     scrollToVirtual(index, true)
+    // Hard backstop: some contexts never fire scroll/scrollend for a
+    // programmatic scroll at all. This guarantees the loop still corrects
+    // itself even then — long enough to outlast any real animation, and a
+    // harmless no-op if the event-based path already handled it.
+    clearTimeout(settleFallbackRef.current)
+    settleFallbackRef.current = setTimeout(handleSettled, 900)
   }
 
   // Jump (no animation) to the first real card, past the cloned lead-in
@@ -56,37 +90,24 @@ export function Environment() {
   }, [])
 
   // Detect when the track has genuinely stopped scrolling (regardless of
-  // whether that was a drag, a click, or autoplay), then — if it settled on
-  // a cloned card — silently snap to the equivalent real card.
+  // whether that was a drag, a click, or autoplay), then hand off to
+  // handleSettled. `scrollend` fires exactly once, precisely when a scroll
+  // (including a smooth-scroll animation) has genuinely finished — no
+  // timing guesswork. Fall back to a debounce for browsers without it.
   useLayoutEffect(() => {
     const track = trackRef.current
     if (!track) return
-    let idleTimer: ReturnType<typeof setTimeout>
 
-    const onScroll = () => {
-      clearTimeout(idleTimer)
-      idleTimer = setTimeout(() => {
-        const children = Array.from(track.children) as HTMLElement[]
-        let closest = 0
-        let minDist = Infinity
-        children.forEach((child, i) => {
-          const dist = Math.abs(child.offsetLeft - track.scrollLeft)
-          if (dist < minDist) {
-            minDist = dist
-            closest = i
-          }
-        })
-
-        if (closest < CLONE_COUNT || closest >= CLONE_COUNT + images.length) {
-          const settled = CLONE_COUNT + realIndexOf(closest)
-          setVirtual(settled)
-          scrollToVirtual(settled, false)
-        } else {
-          setVirtual(closest)
-        }
-      }, SCROLL_IDLE_DELAY)
+    if ('onscrollend' in window) {
+      track.addEventListener('scrollend', handleSettled)
+      return () => track.removeEventListener('scrollend', handleSettled)
     }
 
+    let idleTimer: ReturnType<typeof setTimeout>
+    const onScroll = () => {
+      clearTimeout(idleTimer)
+      idleTimer = setTimeout(handleSettled, SCROLL_IDLE_DELAY)
+    }
     track.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       track.removeEventListener('scroll', onScroll)
@@ -122,10 +143,13 @@ export function Environment() {
               ref={trackRef}
               className="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
             >
-              {extended.map((item) => (
-                <div
+              {extended.map((item, idx) => (
+                <button
                   key={item._key}
-                  className="w-[78%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[46%] lg:w-[31%]"
+                  type="button"
+                  onClick={() => setLightboxIndex(realIndexOf(idx))}
+                  aria-label={`View larger image: ${item.title}`}
+                  className="w-[78%] shrink-0 snap-start cursor-zoom-in overflow-hidden rounded-2xl sm:w-[46%] lg:w-[31%]"
                 >
                   <img
                     src={item.image}
@@ -133,7 +157,7 @@ export function Environment() {
                     loading="lazy"
                     className="aspect-[4/3] w-full object-cover"
                   />
-                </div>
+                </button>
               ))}
             </div>
 
@@ -141,7 +165,7 @@ export function Environment() {
               type="button"
               aria-label="Previous"
               onClick={(e) => {
-                goTo(virtualIndex - 1)
+                goTo(virtualIndexRef.current - 1)
                 e.currentTarget.blur()
               }}
               className="absolute left-0 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-cream-50 text-ink-800 shadow-lifted transition-colors hover:bg-cream-100 sm:flex"
@@ -152,7 +176,7 @@ export function Environment() {
               type="button"
               aria-label="Next"
               onClick={(e) => {
-                goTo(virtualIndex + 1)
+                goTo(virtualIndexRef.current + 1)
                 e.currentTarget.blur()
               }}
               className="absolute right-0 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-cream-50 text-ink-800 shadow-lifted transition-colors hover:bg-cream-100 sm:flex"
@@ -185,6 +209,13 @@ export function Environment() {
           </div>
         </Reveal>
       </Container>
+
+      <Lightbox
+        images={images.map((item) => ({ src: item.image, alt: item.title }))}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
     </Section>
   )
 }

@@ -8,6 +8,30 @@ import type {
   Testimonial,
   ValueProp,
 } from '@/types/content'
+import heroCreche from '@/assets/hero/hero-creche.jpg'
+import heroToddlers from '@/assets/hero/hero-toddlers.jpg'
+import heroPreschool from '@/assets/hero/hero-preschool.jpg'
+import outdoorPlay from '@/assets/facilities/outdoor-play.jpg'
+import compound from '@/assets/facilities/compound.jpg'
+import reception from '@/assets/facilities/reception.jpg'
+import classroom from '@/assets/facilities/classroom.jpg'
+import indoorPlay from '@/assets/facilities/indoor-play.jpg'
+import napRoom from '@/assets/facilities/nap-room.jpg'
+import practicalLifeMaterials from '@/assets/montessori/practical-life.jpg'
+import knobbedCylinders from '@/assets/montessori/knobbed-cylinders.jpg'
+import geometricSolids from '@/assets/montessori/geometric-solids.jpg'
+import binomialCube from '@/assets/montessori/binomial-cube.jpg'
+import pinkTower from '@/assets/montessori/pink-tower.jpg'
+import summerClasses from '@/assets/blog/summer-classes.jpg'
+import moreThanFun from '@/assets/blog/more-than-fun.jpg'
+import beyondAbcs from '@/assets/blog/beyond-abcs.jpg'
+import montessoriSuccess from '@/assets/blog/montessori-success.jpg'
+import momentsIndoorPlay from '@/assets/moments/indoor-play.jpg'
+import momentsColoring from '@/assets/moments/coloring.jpg'
+import momentsCrawling from '@/assets/moments/crawling.jpg'
+import momentsBirthday from '@/assets/moments/birthday.jpg'
+import momentsBabyPortrait from '@/assets/moments/baby-portrait.jpg'
+import momentsNapTime from '@/assets/moments/nap-time.jpg'
 
 export const siteInfo = {
   name: 'Dynamic Little Explorers Montessori School',
@@ -30,40 +54,34 @@ export const navItems: NavItem[] = [
 
 export const heroSlides = [
   {
-    src: 'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=1920&q=80&auto=format&fit=crop',
-    alt: 'A child joyfully exploring sensory play at Dynamic Little Explorers',
+    src: heroCreche,
+    alt: 'A toddler joyfully playing on the slide at Dynamic Little Explorers',
     eyebrow: 'Crèche · 3–18 months',
     title: 'Where curious minds take their',
     highlight: 'first steps',
     description:
       'A nurturing, sensory-rich start for our youngest explorers — secure attachment, gentle routines and endless little discoveries.',
+    flip: true,
   },
   {
-    src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80&auto=format&fit=crop',
-    alt: 'Children learning together in a warm, bright classroom',
+    src: heroToddlers,
+    alt: 'A child engaged in a hands-on bead maze activity in the classroom',
     eyebrow: 'Toddlers · 14 months–3 years',
     title: 'A community built on',
     highlight: 'warmth and wonder',
     description:
       'Confident little voices, hands-on learning and a classroom that feels like a second home — every single day.',
+    flip: true,
   },
   {
-    src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1920&q=80&auto=format&fit=crop',
-    alt: 'A preschooler engrossed in a picture book',
+    src: heroPreschool,
+    alt: 'A preschooler focused on counting beads with a wooden abacus',
     eyebrow: 'Preschool · 3–5 years',
     title: 'Building a strong foundation for',
     highlight: 'lifelong learning',
     description:
       'A Montessori-inspired approach to literacy, numeracy and independence that prepares every child for school life.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=1920&q=80&auto=format&fit=crop',
-    alt: 'A happy toddler enjoying outdoor playtime',
-    eyebrow: 'Play-Based Discovery',
-    title: 'Because childhood should be',
-    highlight: 'full of joy',
-    description:
-      'Fresh air, open play and boundless curiosity — we believe the best lessons happen outside the classroom too.',
+    flip: false,
   },
 ]
 
@@ -105,68 +123,80 @@ export const montessoriAreas: MontessoriArea[] = [
     id: 'practical-life',
     title: 'Practical Life',
     description:
-      'Everyday tasks like pouring, buttoning and tidying build independence, coordination and quiet concentration.',
-    image:
-      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1000&q=80&auto=format&fit=crop',
+      'Everyday tasks like pouring, sorting and tidying build independence, coordination and quiet concentration.',
+    image: practicalLifeMaterials,
   },
   {
     id: 'sensorial',
-    title: 'Sensorial',
+    title: 'Sensorial Development',
     description:
-      'Hands-on materials refine each sense, sharpening how children observe, compare and classify the world.',
-    image:
-      'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=1000&q=80&auto=format&fit=crop',
+      'Hands-on materials like our knobbed cylinders refine each sense, sharpening how children observe and compare.',
+    image: knobbedCylinders,
   },
   {
-    id: 'language',
-    title: 'Language',
+    id: 'geometry',
+    title: 'Shape & Geometry',
     description:
-      'From sandpaper letters to storytime, a rich language environment builds vocabulary and early literacy.',
-    image:
-      'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1000&q=80&auto=format&fit=crop',
+      'Geometric solids turn abstract shapes into something children can hold, name and truly understand.',
+    image: geometricSolids,
   },
   {
-    id: 'mathematics',
-    title: 'Mathematics',
+    id: 'binomial-cube',
+    title: 'Early Algebra & Pattern',
     description:
-      'Concrete, hands-on materials turn abstract number concepts into something children can see, touch and understand.',
-    image:
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000&q=80&auto=format&fit=crop',
+      'The binomial cube introduces pattern and spatial reasoning years before children see an equation.',
+    image: binomialCube,
+  },
+  {
+    id: 'pink-tower',
+    title: 'The Pink Tower',
+    description:
+      'A Montessori classic — building the tower by size alone sharpens visual discrimination and fine motor control.',
+    image: pinkTower,
   },
 ]
 
 export const facilities: Facility[] = [
   {
-    id: 'learning-spaces',
+    id: 'classroom',
     title: 'Bright, Purposeful Classrooms',
     description:
-      'Every room is designed at a child’s scale — calm, orderly, and filled with natural light and inviting materials.',
-    image:
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80&auto=format&fit=crop',
+      'Every room is designed at a child’s scale — calm, orderly, and filled with inviting Montessori materials.',
+    image: classroom,
   },
   {
     id: 'outdoor-play',
     title: 'Safe Outdoor Play',
     description:
-      'A secure, supervised playground where children run, climb and burn off energy in the fresh air every day.',
-    image:
-      'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=1200&q=80&auto=format&fit=crop',
+      'Swings, a sandpit and open-air space where children run, climb and play safely every day.',
+    image: outdoorPlay,
   },
   {
-    id: 'reading-corner',
-    title: 'Cosy Reading Corners',
+    id: 'compound',
+    title: 'Our Welcoming Compound',
     description:
-      'Quiet, book-filled nooks where children curl up to explore stories at their own pace.',
-    image:
-      'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&q=80&auto=format&fit=crop',
+      'A secure, cheerful compound — the first thing families see when they walk through our gates.',
+    image: compound,
   },
   {
-    id: 'creative-studio',
-    title: 'Creative Studio Space',
+    id: 'reception',
+    title: 'Warm Reception',
+    description: 'A calm, welcoming space where every family and visitor is greeted with warmth.',
+    image: reception,
+  },
+  {
+    id: 'indoor-play',
+    title: 'Indoor Play Room',
     description:
-      'A dedicated art and sensory area where mess is welcome and imagination leads the way.',
-    image:
-      'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=1200&q=80&auto=format&fit=crop',
+      'A soft, colourful play space for active fun on rainy days or free-play time indoors.',
+    image: indoorPlay,
+  },
+  {
+    id: 'nap-room',
+    title: 'Peaceful Nap Room',
+    description:
+      'A calm, comfortable space where our youngest explorers rest and recharge during the day.',
+    image: napRoom,
   },
 ]
 
@@ -238,24 +268,22 @@ export const testimonials: Testimonial[] = [
 
 export const blogPosts: BlogPost[] = [
   {
-    id: 'summer-classes-2025',
-    title: 'Join Our Exciting Kids Summer Classes — August 2025',
-    excerpt:
-      'We’re thrilled to announce our upcoming Summer Classes at Dynamic Little Explorers School, happening this August.',
-    category: 'Community',
-    date: 'Jul 15, 2025',
-    image:
-      'https://images.unsplash.com/photo-1543342384-1f1350e27861?w=1200&q=80&auto=format&fit=crop',
-  },
-  {
     id: 'more-than-just-fun',
     title: 'Why It’s More Than Just Fun at Dynamic Little Explorers',
     excerpt:
       'When our children play, they are learning purposefully — every activity is powered by our thoughtful approach.',
     category: 'Community',
     date: 'May 6, 2025',
-    image:
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80&auto=format&fit=crop',
+    image: moreThanFun,
+  },
+  {
+    id: 'summer-classes-2025',
+    title: 'Join Our Exciting Kids Summer Classes — August 2025',
+    excerpt:
+      'We’re thrilled to announce our upcoming Summer Classes at Dynamic Little Explorers School, happening this August.',
+    category: 'Community',
+    date: 'Jul 15, 2025',
+    image: summerClasses,
   },
   {
     id: 'beyond-abcs',
@@ -264,8 +292,7 @@ export const blogPosts: BlogPost[] = [
       'At Dynamic Little Explorers, we believe education goes beyond the books — helping children understand their feelings and interact kindly.',
     category: 'Education',
     date: 'Jun 28, 2025',
-    image:
-      'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&q=80&auto=format&fit=crop',
+    image: beyondAbcs,
   },
   {
     id: 'montessori-lifelong-success',
@@ -275,40 +302,39 @@ export const blogPosts: BlogPost[] = [
       'In the early years of a child’s life, the brain develops rapidly — making quality early childhood education crucial for building a strong foundation.',
     category: 'Education',
     date: 'Jun 8, 2025',
-    image:
-      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&q=80&auto=format&fit=crop',
+    image: montessoriSuccess,
   },
 ]
 
 export const galleryImages: GalleryImage[] = [
   {
     id: 'g1',
-    src: 'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=900&q=80&auto=format&fit=crop',
-    alt: 'Child exploring sensory play at Dynamic Little Explorers',
+    src: momentsBirthday,
+    alt: 'A joyful child celebrating her birthday at Dynamic Little Explorers',
   },
   {
     id: 'g2',
-    src: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=80&auto=format&fit=crop',
-    alt: 'Toddlers playing together in the classroom',
+    src: momentsCrawling,
+    alt: 'A curious baby crawling and exploring',
   },
   {
     id: 'g3',
-    src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=900&q=80&auto=format&fit=crop',
-    alt: 'Preschooler reading a picture book',
+    src: momentsColoring,
+    alt: 'A child engaged in a creative colouring activity',
   },
   {
     id: 'g4',
-    src: 'https://images.unsplash.com/photo-1543342384-1f1350e27861?w=900&q=80&auto=format&fit=crop',
-    alt: 'Child engaged in a creative art activity',
+    src: momentsIndoorPlay,
+    alt: 'Children playing together in the indoor play area',
   },
   {
     id: 'g5',
-    src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80&auto=format&fit=crop',
-    alt: 'Classroom moment at Dynamic Little Explorers',
+    src: momentsNapTime,
+    alt: 'A toddler peacefully resting during nap time',
   },
   {
     id: 'g6',
-    src: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=900&q=80&auto=format&fit=crop',
-    alt: 'Portrait of a happy toddler outdoors',
+    src: momentsBabyPortrait,
+    alt: 'A calm, curious baby at Dynamic Little Explorers',
   },
 ]

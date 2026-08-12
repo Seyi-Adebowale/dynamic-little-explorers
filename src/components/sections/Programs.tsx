@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight, GraduationCap, Sprout, Users } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Section } from '@/components/layout/Section'
@@ -48,8 +47,8 @@ export function Programs() {
 
             return (
               <Reveal key={program.id} delay={i * 0.1}>
-                <Link
-                  to="/programs"
+                <a
+                  href="#"
                   className={`group flex h-full flex-col rounded-2xl border p-8 shadow-soft transition-colors duration-300 ${tone.card} ${tone.border}`}
                 >
                   <span
@@ -79,14 +78,14 @@ export function Programs() {
                       className="transition-transform duration-300 group-hover:translate-x-1"
                     />
                   </span>
-                </Link>
+                </a>
               </Reveal>
             )
           })}
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button as={Link} to="/programs" variant="ghost" icon={<ArrowRight size={16} />}>
+          <Button as="a" href="#" variant="ghost" icon={<ArrowRight size={16} />}>
             View All Programs
           </Button>
         </div>

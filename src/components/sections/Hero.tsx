@@ -20,15 +20,15 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative isolate min-h-[78vh] overflow-hidden bg-ink-900 sm:min-h-[85vh] lg:min-h-[92vh]">
+    <section id="home" className="relative isolate min-h-[68vh] overflow-hidden bg-ink-900 md:min-h-[85vh] lg:min-h-[92vh]">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           <motion.img
             key={slide.src}
             src={slide.src}
             alt={slide.alt}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scaleX: slide.flip ? -1.06 : 1.06, scaleY: 1.06 }}
+            animate={{ opacity: 1, scaleX: slide.flip ? -1 : 1, scaleY: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 h-full w-full object-cover"
@@ -38,7 +38,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/70 via-ink-900/10 to-transparent" />
       </div>
 
-      <Container className="relative z-10 flex min-h-[78vh] flex-col justify-end pb-12 pt-24 sm:min-h-[85vh] sm:pb-20 sm:pt-32 lg:min-h-[92vh] lg:pb-24">
+      <Container className="relative z-10 flex min-h-[68vh] flex-col justify-end pb-10 pt-20 md:min-h-[85vh] md:pb-20 md:pt-32 lg:min-h-[92vh] lg:pb-24">
         <div className="max-w-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -49,16 +49,16 @@ export function Hero() {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <Eyebrow tone="amberLight">{slide.eyebrow}</Eyebrow>
-              <h1 className="mt-4 text-balance text-3xl leading-[1.1] text-cream-50 sm:mt-5 sm:text-5xl sm:leading-[1.08] lg:text-[3.4rem]">
+              <h1 className="mt-3 text-balance text-2xl leading-[1.15] text-cream-50 md:mt-5 md:text-5xl md:leading-[1.08] lg:text-[3.4rem]">
                 {slide.title} <span className="text-amber-300">{slide.highlight}</span>
               </h1>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-cream-200 sm:mt-6 sm:text-lg">
+              <p className="mt-2 max-w-lg text-xs leading-relaxed text-cream-200 md:mt-6 md:text-lg">
                 {slide.description}
               </p>
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-9">
+          <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-9">
             <Button as="a" href="#contact" size="lg" variant="primary" icon={<ArrowRight size={18} />}>
               Book a Visit
             </Button>
@@ -74,7 +74,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-2.5 sm:mt-16">
+        <div className="mt-8 flex items-center gap-2.5 md:mt-16">
           {heroSlides.map((s, i) => (
             <button
               key={s.src}

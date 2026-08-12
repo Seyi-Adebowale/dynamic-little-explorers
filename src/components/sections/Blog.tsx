@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { Section } from '@/components/layout/Section'
 import { Container } from '@/components/layout/Container'
@@ -22,7 +21,7 @@ export function Blog() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           <Reveal>
-            <Link to="/blog" className="group block">
+            <a href="#" className="group block">
               <div className="overflow-hidden rounded-2xl">
                 <img
                   src={featured.image}
@@ -43,14 +42,14 @@ export function Blog() {
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-600">
                 Read the story <ArrowRight size={15} />
               </span>
-            </Link>
+            </a>
           </Reveal>
 
           <div className="flex flex-col gap-6">
             {rest.map((post, i) => (
               <Reveal key={post.id} delay={i * 0.08}>
-                <Link
-                  to="/blog"
+                <a
+                  href="#"
                   className="group flex gap-5 border-t border-ink-200 pt-6 first:border-t-0 first:pt-0"
                 >
                   <div className="w-32 shrink-0 overflow-hidden rounded-xl sm:w-40">
@@ -69,14 +68,14 @@ export function Blog() {
                       {post.title}
                     </h3>
                   </div>
-                </Link>
+                </a>
               </Reveal>
             ))}
           </div>
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button as={Link} to="/blog" variant="ghost" icon={<ArrowRight size={16} />}>
+          <Button as="a" href="#" variant="ghost" icon={<ArrowRight size={16} />}>
             View All Stories
           </Button>
         </div>
