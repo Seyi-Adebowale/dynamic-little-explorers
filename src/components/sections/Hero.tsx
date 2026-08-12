@@ -48,7 +48,7 @@ export function Hero() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Eyebrow tone="amberLight">{slide.eyebrow}</Eyebrow>
+              <Eyebrow tone="amberLight" size="responsive">{slide.eyebrow}</Eyebrow>
               <h1 className="mt-3 text-balance text-2xl leading-[1.15] text-cream-50 md:mt-5 md:text-5xl md:leading-[1.08] lg:text-[3.4rem]">
                 {slide.title} <span className="text-amber-300">{slide.highlight}</span>
               </h1>
