@@ -4,39 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--
+      Description, keywords, OG and Twitter tags are intentionally NOT
+      hardcoded here — react-helmet-async can't remove/replace tags it
+      didn't render itself, so a static tag here would end up duplicated
+      alongside each page's own <Seo> tags. Every route supplies its own
+      via src/components/layout/Seo.tsx.
+    -->
     <title>Dynamic Little Explorers Montessori School | Crèche, Toddler &amp; Preschool</title>
-    <meta
-      name="description"
-      content="Dynamic Little Explorers Montessori School nurtures children from 3 months to 5 years through play, creativity and discovery — a warm, Montessori-inspired crèche, toddler and preschool programme."
-    />
-    <meta
-      name="keywords"
-      content="Dynamic Little Explorers, Montessori school, creche, daycare, nursery school, preschool, toddler programme, early years education, Montessori Lagos, Nigerian nursery school, playschool, kindergarten"
-    />
     <meta name="author" content="Dynamic Little Explorers Montessori School" />
-    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#c73b78" />
     <meta name="format-detection" content="telephone=no, address=no, email=no, date=no" />
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Dynamic Little Explorers Montessori School" />
-    <meta property="og:title" content="Dynamic Little Explorers Montessori School" />
-    <meta
-      property="og:description"
-      content="Where curious minds take their first steps — nurturing creche, toddler and preschool care rooted in play, warmth and Montessori-inspired learning."
-    />
-    <meta property="og:image" content="/og-image.png" />
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Dynamic Little Explorers Montessori School" />
-    <meta
-      name="twitter:description"
-      content="Where curious minds take their first steps — nurturing creche, toddler and preschool care rooted in play, warmth and Montessori-inspired learning."
-    />
-    <meta name="twitter:image" content="/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,6 +28,7 @@
   </head>
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

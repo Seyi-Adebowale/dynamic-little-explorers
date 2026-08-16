@@ -41,7 +41,7 @@ export function WhyUs() {
           <SectionHeading
             eyebrow="Why Families Choose Us"
             title="Everything we do is built around trust"
-            description="Six commitments that shape every classroom, every routine, and every conversation with your family."
+            description="Six commitments that shape every Montessori classroom, every routine, and every conversation with your family."
             align="left"
             tone="forest"
           />

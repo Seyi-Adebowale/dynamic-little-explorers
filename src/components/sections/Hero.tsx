@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, PlayCircle } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
@@ -32,6 +33,7 @@ export function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: slide.objectPosition ?? 'center' }}
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/55 to-berry-900/40" />
@@ -59,12 +61,12 @@ export function Hero() {
           </AnimatePresence>
 
           <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-9">
-            <Button as="a" href="#contact" size="lg" variant="primary" icon={<ArrowRight size={18} />}>
+            <Button as={Link} to="/enrol" size="lg" variant="primary" icon={<ArrowRight size={18} />}>
               Book a Visit
             </Button>
             <Button
-              as="a"
-              href="#programs"
+              as={Link}
+              to="/#programs"
               size="lg"
               variant="ghostLight"
               icon={<PlayCircle size={18} />}

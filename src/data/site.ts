@@ -1,7 +1,5 @@
 import type {
-  BlogPost,
   Facility,
-  GalleryImage,
   MontessoriArea,
   NavItem,
   Program,
@@ -22,34 +20,36 @@ import knobbedCylinders from '@/assets/montessori/knobbed-cylinders.jpg'
 import geometricSolids from '@/assets/montessori/geometric-solids.jpg'
 import binomialCube from '@/assets/montessori/binomial-cube.jpg'
 import pinkTower from '@/assets/montessori/pink-tower.jpg'
-import summerClasses from '@/assets/blog/summer-classes.jpg'
-import moreThanFun from '@/assets/blog/more-than-fun.jpg'
-import beyondAbcs from '@/assets/blog/beyond-abcs.jpg'
-import montessoriSuccess from '@/assets/blog/montessori-success.jpg'
-import momentsIndoorPlay from '@/assets/moments/indoor-play.jpg'
-import momentsColoring from '@/assets/moments/coloring.jpg'
-import momentsCrawling from '@/assets/moments/crawling.jpg'
-import momentsBirthday from '@/assets/moments/birthday.jpg'
-import momentsBabyPortrait from '@/assets/moments/baby-portrait.jpg'
-import momentsNapTime from '@/assets/moments/nap-time.jpg'
 
 export const siteInfo = {
   name: 'Dynamic Little Explorers Montessori School',
   shortName: 'Dynamic Little Explorers',
   tagline: 'Where curiosity takes its first steps',
   footerTagline: 'Little Hands, Great Discoveries',
-  phone: '07030842022',
-  phoneAlt: '08099847760',
+  founded: 2025,
+  phone: '08109937702',
+  whatsapp: '07010844322',
+  whatsappLink: 'https://wa.me/2347010844322',
+  instagramLink: 'https://www.instagram.com/dynamiclittleexplorers/',
   email: 'dynamiclittleexplorersschool@gmail.com',
-  address: 'Block 1 Plot 1, Obasanjo Housing Estate, Beside CMD Road, Lagos',
+  address: 'Block 1, Flat 1, Otedola Jubilee Housing Estate, CMD Road, Beside Omole Phase 2, Lagos',
+  hours: {
+    general: '8:00am – 2:30pm',
+    creche: '6:30am – 7:00pm',
+  },
+  mission:
+    'At Dynamic Little Explorers Montessori School, we are committed to providing a nurturing and stimulating environment where children learn through hands-on experiences, curiosity-driven exploration, and respectful guidance. We strive to develop each child’s intellectual, social, emotional and physical potential while instilling values of kindness, independence and responsibility.',
+  vision:
+    'To nurture confident, independent and compassionate young learners by fostering a love for exploration, creativity and lifelong learning through the Montessori philosophy.',
 }
 
 export const navItems: NavItem[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'Programs', href: '#programs' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Stories', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Programs', href: '/programs' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Stories', href: '/stories' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const heroSlides = [
@@ -62,6 +62,10 @@ export const heroSlides = [
     description:
       'A nurturing, sensory-rich start for our youngest explorers — secure attachment, gentle routines and endless little discoveries.',
     flip: true,
+    // The child sits left-of-centre in the source photo; bias the crop that
+    // way so the horizontal flip doesn't push her off the right edge on
+    // narrow (mobile) viewports.
+    objectPosition: '30% center',
   },
   {
     src: heroToddlers,
@@ -93,6 +97,15 @@ export const programs: Program[] = [
     ageRange: '3 – 18 months',
     description:
       'A nurturing, sensory-rich environment focused on secure attachment, gentle routines and the earliest stages of exploration.',
+    longDescription:
+      'Our NIDO Community (from the Italian for "nest") is a calm, secure space where our youngest explorers form trusting bonds with consistent caregivers. Everything is scaled to the infant — low shelves, soft textures, natural light — so that even before a child can walk, they can move freely and choose their own activity. Gentle routines around feeding, rest and sensory play give each child the security to explore at their own pace.',
+    highlights: [
+      'Consistent, nurturing caregivers who know each child individually',
+      'Freedom of movement in a safe, prepared space',
+      'Sensory materials that respond to an infant’s natural curiosity',
+      'Individual routines that respect each child’s own rhythm',
+    ],
+    image: heroCreche,
     icon: 'Sprout',
     tone: 'berry',
   },
@@ -103,6 +116,15 @@ export const programs: Program[] = [
     ageRange: '14 months – 3 years',
     description:
       'Accompanying curious toddlers through language, movement and independence — building confidence one discovery at a time.',
+    longDescription:
+      'Toddlerhood is a race toward independence, and our Toddler Community is built to support it. Children practise real, purposeful tasks — pouring, spooning, dressing themselves — that build coordination and self-belief. A language-rich environment, predictable routines and materials sized just for them turn everyday moments into rich learning, while still leaving plenty of room for the joyful, messy play toddlers need.',
+    highlights: [
+      'Practical life activities that build independence and coordination',
+      'A language-rich environment that grows vocabulary daily',
+      'Predictable routines that help toddlers feel secure and confident',
+      'Hands-on materials sized for small hands and big curiosity',
+    ],
+    image: heroToddlers,
     icon: 'Users',
     tone: 'forest',
   },
@@ -113,6 +135,15 @@ export const programs: Program[] = [
     ageRange: '3 – 5 years',
     description:
       'A Montessori-inspired foundation in literacy, numeracy and social-emotional growth that prepares every child for school life.',
+    longDescription:
+      'Our Children’s House brings together the full Montessori curriculum — Practical Life, Sensorial, Language and Mathematics — in one prepared environment where children choose their own work and follow their own concentration. Mixed-age classrooms let younger children learn by watching older ones, while older children deepen their understanding by teaching what they know. By the time they graduate, children leave with real reading, writing and number skills, and the confidence to walk into a new classroom knowing how to learn.',
+    highlights: [
+      'The full Montessori curriculum: Practical Life, Sensorial, Language and Mathematics',
+      'Mixed-age classrooms that let children learn from and teach one another',
+      'Child-led work cycles that build focus, independence and initiative',
+      'A strong foundation in literacy and numeracy ahead of primary school',
+    ],
+    image: heroPreschool,
     icon: 'GraduationCap',
     tone: 'amber',
   },
@@ -266,75 +297,3 @@ export const testimonials: Testimonial[] = [
   },
 ]
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: 'more-than-just-fun',
-    title: 'Why It’s More Than Just Fun at Dynamic Little Explorers',
-    excerpt:
-      'When our children play, they are learning purposefully — every activity is powered by our thoughtful approach.',
-    category: 'Community',
-    date: 'May 6, 2025',
-    image: moreThanFun,
-  },
-  {
-    id: 'summer-classes-2025',
-    title: 'Join Our Exciting Kids Summer Classes — August 2025',
-    excerpt:
-      'We’re thrilled to announce our upcoming Summer Classes at Dynamic Little Explorers School, happening this August.',
-    category: 'Community',
-    date: 'Jul 15, 2025',
-    image: summerClasses,
-  },
-  {
-    id: 'beyond-abcs',
-    title: 'Beyond ABCs: Nurturing Your Child’s Social-Emotional Intelligence at Home',
-    excerpt:
-      'At Dynamic Little Explorers, we believe education goes beyond the books — helping children understand their feelings and interact kindly.',
-    category: 'Education',
-    date: 'Jun 28, 2025',
-    image: beyondAbcs,
-  },
-  {
-    id: 'montessori-lifelong-success',
-    title:
-      'Why Early Childhood Education in a Montessori Environment Sets Children Up for Lifelong Success',
-    excerpt:
-      'In the early years of a child’s life, the brain develops rapidly — making quality early childhood education crucial for building a strong foundation.',
-    category: 'Education',
-    date: 'Jun 8, 2025',
-    image: montessoriSuccess,
-  },
-]
-
-export const galleryImages: GalleryImage[] = [
-  {
-    id: 'g1',
-    src: momentsBirthday,
-    alt: 'A joyful child celebrating her birthday at Dynamic Little Explorers',
-  },
-  {
-    id: 'g2',
-    src: momentsCrawling,
-    alt: 'A curious baby crawling and exploring',
-  },
-  {
-    id: 'g3',
-    src: momentsColoring,
-    alt: 'A child engaged in a creative colouring activity',
-  },
-  {
-    id: 'g4',
-    src: momentsIndoorPlay,
-    alt: 'Children playing together in the indoor play area',
-  },
-  {
-    id: 'g5',
-    src: momentsNapTime,
-    alt: 'A toddler peacefully resting during nap time',
-  },
-  {
-    id: 'g6',
-    src: momentsBabyPortrait,
-    alt: 'A calm, curious baby at Dynamic Little Explorers',
-  },
-]

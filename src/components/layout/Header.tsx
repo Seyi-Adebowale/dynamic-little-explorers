@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
@@ -7,10 +8,20 @@ import { Button } from '@/components/ui/Button'
 import { navItems } from '@/data/site'
 import logo from '@/assets/logo-mark.png'
 
+const PAGES_WITH_HERO = ['/', '/about', '/programs', '/gallery', '/stories', '/contact', '/enrol']
+
 export function Header() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+  const hasHero = PAGES_WITH_HERO.includes(pathname)
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+
+  // Pages without a dark hero banner (e.g. an individual story, 404) have no
+  // dark backdrop for the transparent header to sit on at the top of the
+  // page, so treat them as always "scrolled" for styling purposes.
+  const scrolledStyle = scrolled || !hasHero
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -19,9 +30,14 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Scrollspy for the in-page anchor links (Gallery/Stories/Contact) — only
+  // meaningful on the homepage, where those sections actually exist.
   useEffect(() => {
+    if (!isHome) return
+
     const sections = navItems
-      .map((item) => document.querySelector(item.href))
+      .filter((item) => item.href.startsWith('/#'))
+      .map((item) => document.querySelector(item.href.slice(1)))
       .filter((el): el is Element => el !== null)
 
     const observer = new IntersectionObserver(
@@ -36,7 +52,7 @@ export function Header() {
 
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -45,17 +61,23 @@ export function Header() {
     }
   }, [open])
 
+  const isItemActive = (href: string) => {
+    if (href.startsWith('/#')) return isHome && activeSection === href.slice(2)
+    if (href === '/') return isHome
+    return pathname.startsWith(href)
+  }
+
   return (
     <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolledStyle
           ? 'bg-cream-50/90 shadow-soft backdrop-blur-md'
           : 'bg-transparent'
       }`}
     >
       <Container className="flex h-20 items-center justify-between">
-        <a href="#home" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
           <img
             src={logo}
             alt="Dynamic Little Explorers Montessori School"
@@ -64,35 +86,35 @@ export function Header() {
           <span className="flex flex-col leading-tight">
             <span
               className={`font-display text-xs font-semibold transition-colors duration-300 min-[350px]:whitespace-nowrap min-[350px]:text-base md:text-lg ${
-                scrolled ? 'text-ink-900' : 'text-cream-50'
+                scrolledStyle ? 'text-ink-900' : 'text-cream-50'
               }`}
             >
               Dynamic Little{' '}
-              <span className={scrolled ? 'text-berry-600' : 'text-berry-300'}>Explorers</span>
+              <span className={scrolledStyle ? 'text-berry-600' : 'text-berry-300'}>Explorers</span>
             </span>
             <span
               className={`text-[9px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 min-[350px]:text-xs md:tracking-[0.14em] ${
-                scrolled ? 'text-ink-500' : 'text-cream-100'
+                scrolledStyle ? 'text-ink-500' : 'text-cream-100'
               }`}
             >
               Montessori School
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
           {navItems.map((item) => {
-            const isActive = activeSection === item.href.slice(1)
+            const isActive = isItemActive(item.href)
             return (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={`relative py-2 text-sm font-semibold transition-colors duration-300 ${
                   isActive
-                    ? scrolled
+                    ? scrolledStyle
                       ? 'text-berry-600'
                       : 'text-amber-300'
-                    : scrolled
+                    : scrolledStyle
                       ? 'text-ink-700 hover:text-berry-600'
                       : 'text-cream-50 hover:text-amber-300'
                 }`}
@@ -105,14 +127,14 @@ export function Header() {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-              </a>
+              </Link>
             )
           })}
         </nav>
 
         <div className="hidden lg:block">
-          <Button as="a" href="#contact" variant="primary">
-            Enroll Now
+          <Button as={Link} to="/enrol" variant="primary">
+            Enrol Now
           </Button>
         </div>
 
@@ -120,7 +142,7 @@ export function Header() {
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
           className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 lg:hidden ${
-            scrolled || open ? 'bg-ink-100 text-ink-800' : 'bg-cream-50/15 text-cream-50'
+            scrolledStyle || open ? 'bg-ink-100 text-ink-800' : 'bg-cream-50/15 text-cream-50'
           }`}
           onClick={() => setOpen((v) => !v)}
         >
@@ -161,11 +183,11 @@ export function Header() {
 
                 <nav className="flex flex-col gap-1 px-5">
                   {navItems.map((item) => {
-                    const isActive = activeSection === item.href.slice(1)
+                    const isActive = isItemActive(item.href)
                     return (
-                      <a
+                      <Link
                         key={item.href}
-                        href={item.href}
+                        to={item.href}
                         onClick={() => setOpen(false)}
                         className={`flex items-center gap-2 rounded-lg px-2 py-3 text-base font-semibold hover:bg-cream-200 ${
                           isActive ? 'text-berry-600' : 'text-ink-800'
@@ -173,17 +195,17 @@ export function Header() {
                       >
                         {isActive && <span className="h-1.5 w-1.5 rounded-full bg-berry-500" />}
                         {item.label}
-                      </a>
+                      </Link>
                     )
                   })}
                   <Button
-                    as="a"
-                    href="#contact"
+                    as={Link}
+                    to="/enrol"
                     variant="primary"
                     className="mt-4 w-full"
                     onClick={() => setOpen(false)}
                   >
-                    Enroll Now
+                    Enrol Now
                   </Button>
                 </nav>
               </motion.div>

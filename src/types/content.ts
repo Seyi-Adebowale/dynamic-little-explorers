@@ -9,6 +9,9 @@ export interface Program {
   communityName: string
   ageRange: string
   description: string
+  longDescription: string
+  highlights: string[]
+  image: string
   icon: string
   tone: 'berry' | 'forest' | 'amber'
 }
@@ -23,21 +26,6 @@ export interface Testimonial {
   quote: string
   name: string
   role: string
-}
-
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  category: string
-  date: string
-  image: string
-}
-
-export interface GalleryImage {
-  id: string
-  src: string
-  alt: string
 }
 
 export interface MontessoriArea {

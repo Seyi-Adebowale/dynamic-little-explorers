@@ -1,4 +1,5 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { SocialIcon } from '@/components/ui/SocialIcon'
 import { programs, siteInfo } from '@/data/site'
@@ -27,17 +28,20 @@ export function Footer() {
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-300">
             {siteInfo.footerTagline}
           </p>
+          <p className="mt-2 max-w-sm text-xs leading-relaxed text-ink-400">
+            A Montessori crèche, nursery and preschool serving families near Omole Phase 2 and
+            CMD Road, Lagos.
+          </p>
           <div className="mt-6 flex gap-3">
-            {(['facebook', 'instagram', 'twitter'] as const).map((platform) => (
-              <a
-                key={platform}
-                href="#"
-                aria-label={`Visit us on ${platform}`}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-700 text-ink-300 transition-colors hover:border-berry-400 hover:text-berry-300"
-              >
-                <SocialIcon platform={platform} />
-              </a>
-            ))}
+            <a
+              href={siteInfo.instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit us on Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-700 text-ink-300 transition-colors hover:border-berry-400 hover:text-berry-300"
+            >
+              <SocialIcon platform="instagram" />
+            </a>
           </div>
         </div>
 
@@ -48,13 +52,13 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {programs.map((program) => (
               <li key={program.id}>
-                <a
-                  href="#programs"
+                <Link
+                  to="/programs"
                   className="text-sm text-ink-300 transition-colors hover:text-berry-300"
                 >
                   {program.name}
                   <span className="text-ink-500"> · {program.ageRange}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -70,21 +74,34 @@ export function Footer() {
               <span>{siteInfo.address}</span>
             </li>
             <li className="flex items-start gap-2.5">
+              <SocialIcon platform="whatsapp" size={16} className="mt-0.5 shrink-0 text-berry-400" />
+              <a
+                href={siteInfo.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-berry-300"
+              >
+                {siteInfo.whatsapp} <span className="text-ink-500">(WhatsApp)</span>
+              </a>
+            </li>
+            <li className="flex items-start gap-2.5">
               <Phone size={16} className="mt-0.5 shrink-0 text-berry-400" />
-              <span className="flex flex-col gap-1">
-                <a href={`tel:${siteInfo.phone}`} className="hover:text-berry-300">
-                  {siteInfo.phone}
-                </a>
-                <a href={`tel:${siteInfo.phoneAlt}`} className="hover:text-berry-300">
-                  {siteInfo.phoneAlt}
-                </a>
-              </span>
+              <a href={`tel:${siteInfo.phone}`} className="hover:text-berry-300">
+                {siteInfo.phone} <span className="text-ink-500">(Call)</span>
+              </a>
             </li>
             <li className="flex items-center gap-2.5">
               <Mail size={16} className="shrink-0 text-berry-400" />
               <a href={`mailto:${siteInfo.email}`} className="break-all hover:text-berry-300">
                 {siteInfo.email}
               </a>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <Clock size={16} className="mt-0.5 shrink-0 text-berry-400" />
+              <span className="flex flex-col gap-1">
+                <span>Mon–Fri · {siteInfo.hours.creche} (Crèche)</span>
+                <span>Mon–Fri · {siteInfo.hours.general}</span>
+              </span>
             </li>
           </ul>
         </div>
