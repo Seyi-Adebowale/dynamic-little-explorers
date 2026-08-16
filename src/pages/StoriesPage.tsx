@@ -60,7 +60,7 @@ export function StoriesPage() {
         imagePosition="top"
       />
 
-      <Section tone="white">
+      <Section tone="white" tightTop>
         <Container>
           <div ref={topRef} className="scroll-mt-28" />
 

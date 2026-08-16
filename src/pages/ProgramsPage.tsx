@@ -45,7 +45,7 @@ export function ProgramsPage() {
         const reversed = i % 2 === 1
 
         return (
-          <Section key={program.id} tone={i % 2 === 0 ? 'white' : 'cream'}>
+          <Section key={program.id} tone={i % 2 === 0 ? 'white' : 'cream'} tightTop={i === 0}>
             <Container
               className={`grid gap-10 md:grid-cols-2 md:items-center md:gap-14 lg:gap-20 ${
                 reversed ? 'md:[&>*:first-child]:order-2' : ''

@@ -50,16 +50,24 @@ const steps = [
   },
 ]
 
-function FieldLabel({ htmlFor, children }: { htmlFor: string; children: string }) {
+function FieldLabel({
+  htmlFor,
+  required,
+  children,
+}: {
+  htmlFor: string
+  required?: boolean
+  children: string
+}) {
   return (
     <label htmlFor={htmlFor} className="text-sm font-semibold text-ink-800">
-      {children}
+      {children} {required && <span className="text-berry-500">*</span>}
     </label>
   )
 }
 
 const inputClasses =
-  'mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400'
+  'mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400'
 
 function SectionHeader({
   icon: Icon,
@@ -131,7 +139,7 @@ export function EnrolmentPage() {
         imageAlt="A bright, purposeful classroom at Dynamic Little Explorers Montessori School"
       />
 
-      <Section tone="white">
+      <Section tone="white" tightTop>
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
             <Reveal>
@@ -156,11 +164,17 @@ export function EnrolmentPage() {
                 </div>
               ) : (
                 <form name="enrolment" onSubmit={handleSubmit} className="space-y-8">
+                  <h2 className="font-display text-xl font-semibold text-ink-900">
+                    Enrolment Form
+                  </h2>
+
                   <div className="rounded-2xl border border-ink-200 bg-cream-50 p-6 sm:p-8">
                     <SectionHeader icon={User} title="Parent / Guardian details" tone="berry" />
                     <div className="mt-6 grid gap-5 sm:grid-cols-2">
                       <div>
-                        <FieldLabel htmlFor="parentName">Full name</FieldLabel>
+                        <FieldLabel htmlFor="parentName" required>
+                          Full name
+                        </FieldLabel>
                         <input
                           id="parentName"
                           name="parentName"
@@ -169,11 +183,12 @@ export function EnrolmentPage() {
                           value={form.parentName}
                           onChange={handleChange}
                           className={inputClasses}
-                          placeholder="Amaka Johnson"
                         />
                       </div>
                       <div>
-                        <FieldLabel htmlFor="phone">Phone number</FieldLabel>
+                        <FieldLabel htmlFor="phone" required>
+                          Phone number
+                        </FieldLabel>
                         <input
                           id="phone"
                           name="phone"
@@ -182,11 +197,12 @@ export function EnrolmentPage() {
                           value={form.phone}
                           onChange={handleChange}
                           className={inputClasses}
-                          placeholder="080..."
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <FieldLabel htmlFor="email">Email address</FieldLabel>
+                        <FieldLabel htmlFor="email" required>
+                          Email address
+                        </FieldLabel>
                         <input
                           id="email"
                           name="email"
@@ -195,7 +211,6 @@ export function EnrolmentPage() {
                           value={form.email}
                           onChange={handleChange}
                           className={inputClasses}
-                          placeholder="you@email.com"
                         />
                       </div>
                     </div>
@@ -205,7 +220,9 @@ export function EnrolmentPage() {
                     <SectionHeader icon={Baby} title="Child’s details" tone="forest" />
                     <div className="mt-6 grid gap-5 sm:grid-cols-2">
                       <div>
-                        <FieldLabel htmlFor="childName">Child’s full name</FieldLabel>
+                        <FieldLabel htmlFor="childName" required>
+                          Child’s full name
+                        </FieldLabel>
                         <input
                           id="childName"
                           name="childName"
@@ -214,11 +231,12 @@ export function EnrolmentPage() {
                           value={form.childName}
                           onChange={handleChange}
                           className={inputClasses}
-                          placeholder="Their name"
                         />
                       </div>
                       <div>
-                        <FieldLabel htmlFor="childDob">Child’s date of birth</FieldLabel>
+                        <FieldLabel htmlFor="childDob" required>
+                          Child’s date of birth
+                        </FieldLabel>
                         <input
                           id="childDob"
                           name="childDob"
@@ -230,7 +248,9 @@ export function EnrolmentPage() {
                         />
                       </div>
                       <div>
-                        <FieldLabel htmlFor="program">Programme of interest</FieldLabel>
+                        <FieldLabel htmlFor="program" required>
+                          Programme of interest
+                        </FieldLabel>
                         <select
                           id="program"
                           name="program"
@@ -272,7 +292,6 @@ export function EnrolmentPage() {
                         value={form.notes}
                         onChange={handleChange}
                         className={`${inputClasses} resize-none`}
-                        placeholder="Allergies, prior schooling, questions for our admissions team..."
                       />
                     </div>
                   </div>

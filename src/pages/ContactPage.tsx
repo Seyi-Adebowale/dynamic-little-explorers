@@ -66,7 +66,7 @@ export function ContactPage() {
         imageAlt="The warm reception area at Dynamic Little Explorers Montessori School"
       />
 
-      <Section tone="white">
+      <Section tone="white" tightTop>
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
             <Reveal>
@@ -93,10 +93,14 @@ export function ContactPage() {
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
+                  <h2 className="font-display text-xl font-semibold text-ink-900">
+                    Send us a message
+                  </h2>
+
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="text-sm font-semibold text-ink-800">
-                        Your name
+                        Your name <span className="text-berry-500">*</span>
                       </label>
                       <input
                         id="name"
@@ -105,29 +109,28 @@ export function ContactPage() {
                         required
                         value={form.name}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400"
-                        placeholder="Amaka Johnson"
+                        className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400"
                       />
                     </div>
                     <div>
                       <label htmlFor="phone" className="text-sm font-semibold text-ink-800">
-                        Phone number
+                        Phone number <span className="text-berry-500">*</span>
                       </label>
                       <input
                         id="phone"
                         name="phone"
                         type="tel"
+                        required
                         value={form.phone}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400"
-                        placeholder="080..."
+                        className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400"
                       />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="email" className="text-sm font-semibold text-ink-800">
-                      Email address
+                      Email address <span className="text-berry-500">*</span>
                     </label>
                     <input
                       id="email"
@@ -136,8 +139,7 @@ export function ContactPage() {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400"
-                      placeholder="you@email.com"
+                      className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400"
                     />
                   </div>
 
@@ -150,7 +152,7 @@ export function ContactPage() {
                       name="program"
                       value={form.program}
                       onChange={handleChange}
-                      className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400"
+                      className="mt-1.5 w-full rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400"
                     >
                       <option value="">Not sure yet</option>
                       <option value="Crèche (3–18 months)">Crèche (3–18 months)</option>
@@ -163,7 +165,7 @@ export function ContactPage() {
 
                   <div>
                     <label htmlFor="message" className="text-sm font-semibold text-ink-800">
-                      Message
+                      Message <span className="text-berry-500">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -172,8 +174,7 @@ export function ContactPage() {
                       rows={5}
                       value={form.message}
                       onChange={handleChange}
-                      className="mt-1.5 w-full resize-none rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-berry-400"
-                      placeholder="Tell us a little about your child and what you'd like to know..."
+                      className="mt-1.5 w-full resize-none rounded-lg border border-ink-200 bg-cream-50 px-4 py-2.5 text-base text-ink-900 outline-none transition-colors focus:border-berry-400"
                     />
                   </div>
 

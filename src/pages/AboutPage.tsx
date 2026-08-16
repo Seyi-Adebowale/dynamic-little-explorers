@@ -87,7 +87,7 @@ export function AboutPage() {
         imageAlt="Children playing safely outdoors at Dynamic Little Explorers Montessori School"
       />
 
-      <Section tone="cream">
+      <Section tone="cream" tightTop>
         <Container>
           <SectionHeading eyebrow="Our Philosophy" title="Mission &amp; Vision" tone="forest" />
 

@@ -69,7 +69,7 @@ export function GalleryPage() {
         imageAlt="Children playing together at Dynamic Little Explorers Montessori School"
       />
 
-      <Section tone="white">
+      <Section tone="white" tightTop>
         <Container>
           <div ref={topRef} className="scroll-mt-28" />
           {!loading && images.length === 0 && (

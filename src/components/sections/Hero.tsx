@@ -21,7 +21,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative isolate min-h-[85vh] overflow-hidden bg-ink-900 lg:min-h-[92vh]">
+    <section id="home" className="relative isolate min-h-[100dvh] overflow-hidden bg-ink-900 sm:min-h-[85vh] lg:min-h-[92vh]">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           <motion.img
@@ -40,7 +40,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/70 via-ink-900/10 to-transparent" />
       </div>
 
-      <Container className="relative z-10 flex min-h-[85vh] flex-col justify-end pb-10 pt-20 md:pb-20 md:pt-32 lg:min-h-[92vh] lg:pb-24">
+      <Container className="relative z-10 flex min-h-[100dvh] flex-col justify-end pb-10 pt-20 sm:min-h-[85vh] md:pb-20 md:pt-32 lg:min-h-[92vh] lg:pb-24">
         <div className="max-w-xl">
           <AnimatePresence mode="wait">
             <motion.div
