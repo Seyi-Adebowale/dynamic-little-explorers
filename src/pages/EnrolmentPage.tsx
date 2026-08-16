@@ -33,7 +33,7 @@ const initialForm = {
   botcheck: '',
 }
 
-const WEB3FORMS_ACCESS_KEY = '363ea94f-4dcb-4839-bb70-894047d2cd8c'
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ENROLMENT_KEY
 
 const steps = [
   {

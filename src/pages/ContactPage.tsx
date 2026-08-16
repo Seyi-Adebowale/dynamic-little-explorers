@@ -15,7 +15,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error'
 
 const initialForm = { name: '', email: '', phone: '', program: '', message: '', botcheck: '' }
 
-const WEB3FORMS_ACCESS_KEY = '7889d036-be83-4609-8e4b-58f7fdc710aa'
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_CONTACT_KEY
 
 export function ContactPage() {
   const [form, setForm] = useState(initialForm)
@@ -253,17 +253,17 @@ export function ContactPage() {
                   </li>
                 </ul>
 
-                <div className="mt-6 flex gap-3">
-                  <a
-                    href={siteInfo.instagramLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Visit us on Instagram"
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-200 text-ink-600 transition-colors hover:border-berry-400 hover:text-berry-600"
-                  >
+                <a
+                  href={siteInfo.instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-6 flex items-center gap-3 text-sm text-ink-700 hover:text-berry-600"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink-200 text-ink-600 transition-colors group-hover:border-berry-400">
                     <SocialIcon platform="instagram" />
-                  </a>
-                </div>
+                  </span>
+                  Follow us on Instagram
+                </a>
 
                 <div className="mt-8 overflow-hidden rounded-xl border border-ink-200">
                   <iframe
